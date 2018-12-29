@@ -23,6 +23,9 @@ import store from 'store';
 import SettingsPanel from 'main/SettingsPanel';
 import {Auth} from 'auth';
 
+import ChatPanel from 'main/chatPanel/ChatPanel';
+import './fake-db/fake-db';
+
 const jss = create({
     ...jssPreset(),
     plugins: [...jssPreset().plugins, jssExtend()]
@@ -54,6 +57,7 @@ ReactDOM.render(
                                 }
                                 rightSidePanel={
                                     <React.Fragment>
+                                        <ChatPanel />
                                         <QuickPanel/>
                                     </React.Fragment>
                                 }

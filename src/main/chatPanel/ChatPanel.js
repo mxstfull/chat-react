@@ -9,6 +9,8 @@ import Chat from './Chat';
 import classNames from 'classnames';
 import withReducer from 'store/withReducer';
 import reducer from './store/reducers';
+import IndividualChat from './IndividualChat';
+import "./IndividualChat.css";
 
 const styles = theme => ({
     root : {
@@ -49,10 +51,33 @@ const styles = theme => ({
         '&.opened'                    : {
             transform: 'translateX(0)'
         }
+    },
+
+    chartAddButton: {
+        display: 'flex',
+        width: 50,
+        height: 50,
+        background: '#F44336',
+        justifyContent: 'center',
+        alignItems: 'center',
+        fontSize: 25,
+        fontWeight: 'bold',
+        cursor: 'pointer'
+    },
+    individualChat: {
+        position: 'fixed',
+        bottom: 0,
+        right: 360,
+        zIndex: 10,
+        display: 'flex'
     }
 });
 
 class ChatPanel extends Component {
+
+    state = {
+        individualchats: []
+    };
 
     componentDidMount()
     {
@@ -85,14 +110,19 @@ class ChatPanel extends Component {
         {
             this.props.closeChatPanel();
         }
-    };
+    }
+
+    addIndividualChat = () => {
+        this.state.individualchats.push('aaa');
+       this.setState({individualchats: this.state.individualchats});
+    }
 
     render()
     {
         const {classes, openChatPanel, closeChatPanel, contacts, selectedContactId, state} = this.props;
 
         const selectedContact = contacts.find(_contact => _contact.id === selectedContactId);
-
+        const {individualchats} = this.state;
         return (
             <div className={classes.root}>
                 <ClickAwayListener onClickAway={() => state && closeChatPanel()}>
@@ -117,6 +147,7 @@ class ChatPanel extends Component {
                                         </React.Fragment>
                                     )}
                                 </div>
+                                <span className={classes.chartAddButton} onClick={this.addIndividualChat}>D</span>
                                 <IconButton onClick={closeChatPanel} color="inherit">
                                     <Icon>close</Icon>
                                 </IconButton>
@@ -126,8 +157,18 @@ class ChatPanel extends Component {
                             <ContactList className="flex flex-no-shrink"/>
                             <Chat className="flex flex-1 z-10"/>
                         </Paper>
+                        
                     </div>
+                    
                 </ClickAwayListener>
+                <div className={classNames(classes.individualChat, {'closeIndvidualchat': !state})}>
+                    {
+                        this.state.individualchats.map(chatItem => 
+                            <IndividualChat/>
+                        )
+                    }
+                    
+                </div>
             </div>
         );
     }

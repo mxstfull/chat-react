@@ -12,6 +12,7 @@ import reducer from './store/reducers';
 import IndividualChat from './IndividualChat';
 import "./IndividualChat.css";
 
+
 const styles = theme => ({
     root : {
         width                         : 70,

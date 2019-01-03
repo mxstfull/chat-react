@@ -8,10 +8,12 @@
     margin: 0 10px;
     border: solid 2px #f44336;
     background: white;
+    display: flex;
+    flex-direction: column;
 }
 
 .individual-chat-item .header{
-    height: 50px;
+    height: 80px;
     background: #f44336;
     color: white;
     display: flex;
@@ -21,11 +23,13 @@
 
 .individual-chat-item .chat-content{
     padding: 10px;
+    height: 100%;
+    overflow: scroll;
 }
 
 .individual-chat-item .chat-content .chat-item {
     display: flex;
-    
+    margin: 10px 0;
 }
 
 .individual-chat-item .chat-content .chat-item .chat-avatar {
@@ -64,4 +68,11 @@
     width: 0;
     height: 0;
     border-style: solid;
+}
+
+.individual-chat-item .chat-message-input {
+    height: 80px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
 }

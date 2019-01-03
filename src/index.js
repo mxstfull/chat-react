@@ -1,4 +1,4 @@
-import 'babel-polyfill'
+import 'babel-polyfill';
 import 'typeface-muli';
 import React from 'react';
 import ReactDOM from 'react-dom';

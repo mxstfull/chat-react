@@ -22,17 +22,6 @@ class IndividualChat extends Component {
             sendMSG: "",
             messages: []
         }
-
-        // 
-        // const pusher = new Pusher('64a9f0ddad38c595ba94', {
-        //     cluster: 'us2',
-        //     forceTLS: true
-        // });
-
-        // const channel = pusher.subscribe('my-channel');
-        // channel.bind('my-event', function (data) {
-        //     alert(JSON.stringify(data));
-        // });
     }
 
     componentDidMount() {
@@ -78,7 +67,6 @@ class IndividualChat extends Component {
         this.state.sendMSG = "";
         this.setState({
             sendMSG: this.state.sendMSG,
-            // messages: this.state.messages
         });
 
         axios({
